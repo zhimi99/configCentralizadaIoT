@@ -1,3 +1,4 @@
+#archivo de condiguracion de rutas, aqui se agrega los nuevos microservcios con su nombre y la ruta que va a tomar medinate la api gateway
 spring:
   cloud:
     gateway:
