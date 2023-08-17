@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    gateway:
+      routes: 
+     
+      - id: servicio-oauth
+        uri: lb://servicio-oauth #lb es balanceo de carga
+        predicates:
+          - Path=/api/security/**
+        filters:
+          - StripPrefix=2 
+      
+      - id: servicio-usuarios
+        uri: lb://servicio-usuarios #lb es balanceo de carga
+        predicates:
+          - Path=/api/usuarios/**
+        filters:
+          - StripPrefix=2
+      
+      - id: servicio-nodoco2
+        #uri: http://34.226.142.210:39749
+        uri: lb://servicio-nodoco2
+        predicates:
+        - Path=/api/nodoco2/** #ruta para el  acceso a los endpoints del nodoco2
+        filters:
+        - StripPrefix=2
+          
